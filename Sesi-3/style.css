@@ -1,0 +1,65 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Navbar */
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fbc02d !important;
+}
+
+/* Hero */
+.hero-title {
+  font-size: 2.5rem;
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+}
+
+/* Projects */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  background-color: #f0f0f0;
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Animasi Fade-in */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-pink {
+  background: linear-gradient(135deg,#f48fb1,#f06292);
+}
+.bg-gradient-blue {
+  background: linear-gradient(90deg,#42a5f5,#1e88e5);
+}
+
+/* Contact Section */
+.contact-section {
+  background: linear-gradient(135deg,#ff9800,#f44336); /* oranye ke merah agar kontras */
+  color: #fff;
+}
+.contact-section h2 {
+  font-size: 2rem;
+}
+.contact-section p {
+  font-size: 1.1rem;
+}
+.contact-section .btn {
+  font-size: 1.1rem;
+}
