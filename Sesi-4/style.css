@@ -1,0 +1,1211 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0d0423;
+    color:#fff;
+}
+
+/* Container */
+
+.container{
+
+    width:95%;
+    margin:auto;
+    margin-top:20px;
+
+    background:linear-gradient(135deg,#19142d,#6d2c96,#7583d5);
+
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.2);
+
+}
+
+/* Navbar */
+
+nav{
+
+    height:80px;
+
+}
+
+nav ul{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:70px;
+
+    list-style:none;
+
+}
+
+nav a{
+
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+
+}
+
+.logo{
+
+    width:120px;
+    height:35px;
+
+    background:#14061f;
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        90% 100%,
+        10% 100%
+    );
+
+}
+
+/* Hero */
+
+.hero{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    min-height:80vh;
+
+    padding:60px;
+
+}
+
+.hero-text{
+
+    width:48%;
+
+}
+
+.hero-text h1{
+
+    font-size:72px;
+    font-weight:800;
+
+}
+
+.hero-text h2{
+
+    font-size:48px;
+    margin-top:-10px;
+    margin-bottom:25px;
+
+}
+
+.blue{
+
+    color:#78d8ff;
+
+}
+
+.purple{
+
+    color:#b16cff;
+
+}
+
+.hero-text p{
+
+    color:#ddd;
+    line-height:2;
+    max-width:520px;
+    margin-bottom:40px;
+
+}
+
+button{
+
+    padding:14px 40px;
+
+    border:none;
+
+    border-radius:30px;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    background:linear-gradient(90deg,#74dbff,#b94bff);
+
+}
+
+.hero-image{
+
+    width:45%;
+    display:flex;
+    justify-content:center;
+
+}
+
+.hero-image img{
+
+    width:100%;
+    max-width:470px;
+
+}
+
+/* About */
+
+.about{
+
+    position:relative;
+
+    padding:120px 15%;
+
+    text-align:center;
+
+    overflow:hidden;
+
+}
+
+/* Grid Background */
+
+.about::before{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    top:0;
+
+    width:45%;
+    height:100%;
+
+    background-image:
+
+    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+
+    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+
+    background-size:90px 90px;
+
+    opacity:.5;
+
+}
+
+.about h2{
+
+    font-size:60px;
+    margin-bottom:40px;
+
+}
+
+.about p{
+
+    max-width:900px;
+
+    margin:auto;
+
+    color:#ddd;
+
+    line-height:2;
+
+}
+
+body{
+
+    background:#12051f;
+    color:white;
+    font-family:Poppins,sans-serif;
+
+}
+
+.work{
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/*======================
+TOP SKILLS
+=======================*/
+
+.top-skills{
+
+    display:flex;
+    gap:15px;
+
+    margin-top:60px;
+
+}
+
+.skill{
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:#2a203b;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    position:relative;
+
+}
+
+.skill::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:1px;
+    height:280px;
+
+    background:#5d2ba5;
+
+    top:55px;
+
+    opacity:.4;
+
+}
+
+/*======================
+PLANET AREA
+=======================*/
+
+.planet-area{
+
+    position:relative;
+
+    width:900px;
+    height:650px;
+
+    margin:60px auto 0;
+
+}
+
+/* Glow */
+
+.planet-area::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:600px;
+    height:280px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+    rgba(170,120,255,.35),
+    transparent 70%);
+
+    filter:blur(20px);
+
+}
+
+/* Planet */
+
+.planet{
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+    180deg,
+    #6e91ad,
+    #7a3fd8);
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:70px;
+
+    color:white;
+
+    box-shadow:
+    0 0 40px #9c4dff,
+    0 0 120px #7e46ff;
+
+}
+
+/* Orbit */
+
+.orbit{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border:1px solid rgba(170,90,255,.5);
+
+    border-radius:50%;
+
+}
+
+.orbit1{
+
+    width:700px;
+    height:220px;
+
+}
+
+.orbit2{
+
+    width:600px;
+    height:170px;
+
+}
+
+.orbit3{
+
+    width:500px;
+    height:130px;
+
+}
+
+/* Icon */
+
+.icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#281d3d;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:absolute;
+
+    color:#b37cff;
+
+    font-size:14px;
+
+}
+
+.html{
+
+    left:120px;
+    top:340px;
+
+}
+
+.css{
+
+    right:120px;
+    top:360px;
+
+}
+
+.react{
+
+    right:170px;
+    top:260px;
+
+}
+
+.js{
+
+    right:80px;
+    top:320px;
+
+}
+
+.figma{
+
+    left:170px;
+    top:260px;
+
+}
+
+/*======================
+TITLE
+=======================*/
+
+.work h2{
+
+    margin-top:-20px;
+
+    font-size:72px;
+
+    font-weight:700;
+
+}
+
+.work h2 span:first-child{
+
+    background:linear-gradient(
+    90deg,
+    #7fdfff,
+    #cfcfff);
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+}
+
+.purple{
+
+    background:linear-gradient(
+    90deg,
+    #c883ff,
+    #8d3bff);
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+}
+
+.work p{
+
+    margin-top:15px;
+
+    color:#ddd;
+
+}
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+    background:#0b0718;
+    color:#fff;
+}
+
+/* ==========================
+   SECTION
+========================== */
+
+.recent-work{
+
+    position:relative;
+
+    padding:100px 0 80px;
+
+    overflow:hidden;
+
+}
+
+.container{
+
+    width:min(1200px,90%);
+    margin:auto;
+
+}
+
+/* Background Glow */
+
+.recent-work::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+    rgba(140,70,255,.18),
+    transparent 70%);
+
+    top:250px;
+    left:-200px;
+
+    filter:blur(70px);
+
+}
+
+.recent-work::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+    rgba(90,170,255,.12),
+    transparent 70%);
+
+    bottom:-150px;
+    right:-200px;
+
+    filter:blur(70px);
+
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:120px;
+
+}
+
+.section-title h1{
+
+    font-size:68px;
+    font-weight:700;
+
+}
+
+.blue{
+
+    background:linear-gradient(
+    90deg,
+    #74dcff,
+    #d5e4ff);
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+}
+
+.purple{
+
+    background:linear-gradient(
+    90deg,
+    #b676ff,
+    #7f3fff);
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+}
+
+.section-title p{
+
+    margin-top:12px;
+
+    color:#d0d0d0;
+
+    font-size:17px;
+
+}
+
+/* ==========================
+   PROJECT
+========================== */
+
+.project{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:80px;
+
+    margin-bottom:180px;
+
+    position:relative;
+
+}
+
+.reverse{
+
+    direction:rtl;
+
+}
+
+.reverse>*{
+
+    direction:ltr;
+
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+.project-content{
+
+    position:relative;
+
+    z-index:5;
+
+}
+
+.project-content small{
+
+    color:#74dcff;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:13px;
+
+}
+
+.project-content h2{
+
+    font-size:50px;
+
+    margin:10px 0 35px;
+
+}
+
+.description{
+
+    background:rgba(60,40,95,.78);
+
+    backdrop-filter:blur(18px);
+
+    padding:35px;
+
+    border-radius:18px;
+
+    color:#d8d8d8;
+
+    line-height:2;
+
+    width:570px;
+
+    position:relative;
+
+    z-index:5;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.social{
+
+    display:flex;
+
+    gap:22px;
+
+    margin-top:35px;
+
+}
+
+.social a{
+
+    color:white;
+
+    font-size:26px;
+
+    transition:.35s;
+
+}
+
+.social a:hover{
+
+    color:#8b5dff;
+
+    transform:translateY(-4px);
+
+}
+
+/* ==========================
+   IMAGE
+========================== */
+
+.project-image{
+
+    position:relative;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.project-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-20px;
+
+    border-radius:25px;
+
+    background:#37204d;
+
+    z-index:-1;
+
+}
+
+.project-image img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:16px;
+
+    transition:.6s;
+
+}
+
+.project-image:hover img{
+
+    transform:scale(1.06);
+
+}
+
+/* ==========================
+   OVERLAP
+========================== */
+
+.project:first-child .description{
+
+    margin-right:-130px;
+
+}
+
+.reverse .description{
+
+    margin-left:-130px;
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1000px){
+
+.project{
+
+grid-template-columns:1fr;
+
+gap:50px;
+
+margin-bottom:120px;
+
+}
+
+.reverse{
+
+direction:ltr;
+
+}
+
+.project-content{
+
+order:2;
+
+}
+
+.project-image{
+
+order:1;
+
+}
+
+.description{
+
+width:100%;
+
+margin:0!important;
+
+}
+
+.section-title h1{
+
+font-size:52px;
+
+}
+
+.project-content h2{
+
+font-size:38px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.section-title h1{
+
+font-size:42px;
+
+}
+
+.project-content h2{
+
+font-size:30px;
+
+}
+
+.description{
+
+padding:25px;
+
+font-size:15px;
+
+line-height:1.8;
+
+}
+
+.social a{
+
+font-size:22px;
+
+}
+
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #2b0a3d;
+    color: #fff;
+}
+
+/* Layout utama */
+.contact-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 60px 100px;
+    flex-wrap: wrap;
+}
+
+/* Kolom kiri */
+.contact-info {
+    width: 45%;
+}
+
+.contact-info h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.contact-info h2 {
+    font-size: 24px;
+    color: #a0c4ff;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Daftar kontak - Diberi list-style: none agar titik bullet hilang */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    list-style: none; /* <-- Menghilangkan titik bullet (•) */
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding-left: 0;
+}
+
+/* PERBAIKAN IKON: Mematikan position absolute dari ikon planet */
+.contact-item .icon {
+    position: relative !important; /* Menimpa absolute dari section orbit */
+    top: auto !important;          /* Hapus posisi top dari orbit */
+    left: auto !important;         /* Hapus posisi left dari orbit */
+    right: auto !important;        /* Hapus posisi right dari orbit */
+    width: 60px;
+    height: 60px;
+    background-color: #1e1530;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.contact-item .icon img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(1.2);
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+/* Form kanan */
+.contact-form {
+    width: 45%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.contact-form textarea {
+    height: 100px;
+    resize: none;
+}
+
+.contact-form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #00b4d8, #7209b7);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    opacity: 0.8;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+}
+
+.social-icons a {
+    margin-left: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* Responsif */
+@media (max-width: 900px) {
+    .contact-section {
+        flex-direction: column;
+        padding: 40px;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* ==========================
+   FIX TOP SKILLS EDUWRK
+========================== */
+
+.work{
+    position:relative;
+}
+
+
+/* Container ikon EDUWRK */
+
+.top-skills{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    margin-top:60px;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+
+/* Lingkaran ikon */
+
+.skill{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#29213d;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:28px;
+
+    color:#fff;
+
+    position:relative;
+
+    box-shadow:
+    0 0 25px rgba(140,80,255,.15);
+
+}
+
+
+/* Garis vertikal turun */
+
+.skill::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:90px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:2px;
+
+    height:460px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(150,80,255,.7),
+        transparent
+    );
+
+}
+
+
+/* Memastikan planet tidak menimpa */
+
+.planet-area{
+
+    margin-top:20px;
+
+    z-index:1;
+
+}
+
+
+/* Responsive */
+
+@media(max-width:700px){
+
+    .top-skills{
+
+        gap:10px;
+
+    }
+
+
+    .skill{
+
+        width:55px;
+
+        height:55px;
+
+        font-size:18px;
+
+    }
+
+
+    .skill::after{
+
+        top:55px;
+
+        height:250px;
+
+    }
+
+}
