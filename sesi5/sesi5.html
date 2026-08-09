@@ -1,0 +1,2801 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Product Catalog</title>
+
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(124, 58, 237, .18),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(91, 33, 182, .16),
+                    transparent 30%
+                ),
+
+                #0d0423;
+
+            color: #ffffff;
+        }
+
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .page-wrapper {
+            width: 100%;
+            max-width: 1450px;
+
+            margin: auto;
+
+            padding:
+                40px
+                30px
+                80px;
+        }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .page-header {
+            display: flex;
+
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .header-content {
+            max-width: 700px;
+        }
+
+
+        .section-label {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 7px;
+
+            margin-bottom: 10px;
+
+            color: #a78bfa;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+
+        .section-label::before {
+            content: "";
+
+            width: 25px;
+            height: 2px;
+
+            border-radius: 20px;
+
+            background: #8b5cf6;
+        }
+
+
+        .page-header h1 {
+            margin: 0;
+
+            font-size:
+                clamp(30px, 4vw, 48px);
+
+            font-weight: 800;
+
+            line-height: 1.1;
+
+            letter-spacing: -1.5px;
+        }
+
+
+        .page-header p {
+            margin-top: 12px;
+
+            color: #aaa5bd;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* Product Counter */
+
+        .product-counter {
+            min-width: 120px;
+
+            padding: 15px 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            text-align: center;
+
+            backdrop-filter: blur(15px);
+        }
+
+
+        .product-counter span {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            line-height: 1;
+        }
+
+
+        .product-counter small {
+            display: block;
+
+            margin-top: 6px;
+
+            color: #858093;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           FILTER CARD
+        ===================================================== */
+
+        .filter-card {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.075),
+                    rgba(255,255,255,.025)
+                );
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.22);
+
+            backdrop-filter: blur(20px);
+        }
+
+
+        .filter-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            top: -150px;
+            right: -80px;
+
+            border-radius: 50%;
+
+            background: #8b5cf6;
+
+            opacity: .13;
+
+            filter: blur(70px);
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search-box {
+            position: relative;
+
+            width: 100%;
+            height: 58px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .search-box input {
+            width: 100%;
+            height: 100%;
+
+            padding:
+                0
+                55px
+                0
+                52px;
+
+            outline: none;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 16px;
+
+            background:
+                rgba(7,4,20,.55);
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            transition:
+                border .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .search-box input::placeholder {
+            color: #777287;
+        }
+
+
+        .search-box input:focus {
+            border-color:
+                rgba(139,92,246,.7);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(139,92,246,.1);
+        }
+
+
+        .search-icon {
+            position: absolute;
+
+            left: 19px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #8b5cf6;
+
+            font-size: 18px;
+
+            pointer-events: none;
+
+            z-index: 2;
+        }
+
+
+        .clear-search {
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 30px;
+            height: 30px;
+
+            transform:
+                translateY(-50%);
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.07);
+
+            color: #aaa5bd;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: .2s ease;
+        }
+
+
+        .clear-search.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .clear-search:hover {
+            background:
+                rgba(255,255,255,.14);
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           FILTER TITLE
+        ===================================================== */
+
+        .filter-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 13px;
+
+            color: #aaa5bd;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        .filter-title i {
+            color: #a78bfa;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           CATEGORY
+        ===================================================== */
+
+        .category-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .category-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            padding:
+                10px
+                17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 50px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color: #aaa5bd;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                border .2s ease,
+                color .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(139,92,246,.45);
+
+            background:
+                rgba(139,92,246,.10);
+
+            color: #ffffff;
+        }
+
+
+        .category-btn.active {
+            border-color: transparent;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #6d28d9
+                );
+
+            color: #ffffff;
+
+            box-shadow:
+                0 8px 22px
+                rgba(109,40,217,.28);
+        }
+
+
+        .category-btn i {
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           BOTTOM FILTER
+        ===================================================== */
+
+        .filter-bottom {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr
+                auto;
+
+            align-items: end;
+
+            gap: 15px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+
+        .select-filter label {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-bottom: 9px;
+
+            color: #aaa5bd;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        .select-filter label i {
+            color: #a78bfa;
+        }
+
+
+        /* =====================================================
+           SELECT
+        ===================================================== */
+
+        .custom-select {
+            position: relative;
+        }
+
+
+        .custom-select select {
+            appearance: none;
+            -webkit-appearance: none;
+
+            width: 100%;
+            height: 48px;
+
+            padding:
+                0
+                42px
+                0
+                15px;
+
+            outline: none;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 13px;
+
+            background:
+                rgba(7,4,20,.55);
+
+            color: #ffffff;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+
+        .custom-select select:hover,
+        .custom-select select:focus {
+            border-color:
+                rgba(139,92,246,.55);
+        }
+
+
+        .custom-select select option {
+            background: #171126;
+
+            color: #ffffff;
+        }
+
+
+        .custom-select > i {
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #8d879d;
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        .reset-filter {
+            height: 48px;
+
+            padding:
+                0
+                20px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 13px;
+
+            background: transparent;
+
+            color: #aaa5bd;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: .2s ease;
+        }
+
+
+        .reset-filter:hover {
+            border-color:
+                rgba(239,68,68,.3);
+
+            background:
+                rgba(239,68,68,.08);
+
+            color: #fca5a5;
+        }
+
+
+        /* =====================================================
+           ACTIVE FILTER
+        ===================================================== */
+
+        .active-filter-area {
+            min-height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding:
+                15px
+                2px
+                12px;
+        }
+
+
+        .active-filter-left {
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .filter-result-text {
+            color: #858093;
+
+            font-size: 13px;
+        }
+
+
+        .filter-result-text strong {
+            color: #ffffff;
+        }
+
+
+        .active-filters {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .filter-chip {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                6px
+                10px;
+
+            border:
+                1px solid
+                rgba(139,92,246,.2);
+
+            border-radius: 50px;
+
+            background:
+                rgba(139,92,246,.08);
+
+            color: #c4b5fd;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .filter-chip button {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 17px;
+            height: 17px;
+
+            padding: 0;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: #ffffff;
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           PRODUCT GRID
+        ===================================================== */
+
+        .product-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 22px;
+        }
+
+
+        /* =====================================================
+           PRODUCT CARD
+        ===================================================== */
+
+        .product-card {
+            position: relative;
+
+            overflow: hidden;
+
+            min-width: 0;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
+
+
+        .product-card:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(139,92,246,.35);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,.25);
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .product-image {
+            position: relative;
+
+            height: 225px;
+
+            overflow: hidden;
+
+            background: #171126;
+        }
+
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform .5s ease;
+        }
+
+
+        .product-card:hover
+        .product-image img {
+            transform:
+                scale(1.07);
+        }
+
+
+        /* =====================================================
+           BADGE
+        ===================================================== */
+
+        .product-badge {
+            position: absolute;
+
+            top: 13px;
+            left: 13px;
+
+            padding:
+                6px
+                10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            border-radius: 50px;
+
+            background:
+                rgba(10,7,25,.72);
+
+            color: #ffffff;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        /* =====================================================
+           FAVORITE
+        ===================================================== */
+
+        .favorite-btn {
+            position: absolute;
+
+            top: 12px;
+            right: 12px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 37px;
+            height: 37px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            border-radius: 50%;
+
+            background:
+                rgba(10,7,25,.65);
+
+            color: #ffffff;
+
+            backdrop-filter: blur(10px);
+
+            transition: .2s ease;
+        }
+
+
+        .favorite-btn:hover {
+            background: #8b5cf6;
+
+            border-color: #8b5cf6;
+        }
+
+
+        .favorite-btn.active {
+            background: #ef4444;
+
+            border-color: #ef4444;
+        }
+
+
+        /* =====================================================
+           PRODUCT CONTENT
+        ===================================================== */
+
+        .product-content {
+            padding: 17px;
+        }
+
+
+        .product-category {
+            margin-bottom: 6px;
+
+            color: #a78bfa;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .product-name {
+            margin:
+                0
+                0
+                8px;
+
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        .product-description {
+            min-height: 38px;
+
+            margin-bottom: 14px;
+
+            color: #858093;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            display: -webkit-box;
+
+            -webkit-line-clamp: 2;
+
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+        }
+
+
+        .product-footer {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+
+        .product-price {
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 800;
+        }
+
+
+        .product-rating {
+            display: flex;
+
+            align-items: center;
+
+            gap: 4px;
+
+            color: #fbbf24;
+
+            font-size: 11px;
+        }
+
+
+        .product-rating span {
+            color: #858093;
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-state {
+            padding:
+                75px
+                20px;
+
+            text-align: center;
+
+            border:
+                1px dashed
+                rgba(255,255,255,.1);
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.02);
+        }
+
+
+        .empty-icon {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 65px;
+            height: 65px;
+
+            margin:
+                0
+                auto
+                18px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(139,92,246,.1);
+
+            color: #a78bfa;
+
+            font-size: 25px;
+        }
+
+
+        .empty-state h3 {
+            margin-bottom: 7px;
+
+            color: #ffffff;
+
+            font-size: 20px;
+        }
+
+
+        .empty-state p {
+            margin-bottom: 20px;
+
+            color: #858093;
+
+            font-size: 13px;
+        }
+
+
+        .empty-reset {
+            padding:
+                10px
+                18px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #8b5cf6;
+
+            color: #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: .2s ease;
+        }
+
+
+        .empty-reset:hover {
+            background: #7c3aed;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE TABLET
+        ===================================================== */
+
+        @media (max-width: 1150px) {
+
+            .product-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .page-wrapper {
+                padding:
+                    30px
+                    20px
+                    60px;
+            }
+
+
+            .filter-bottom {
+                grid-template-columns:
+                    1fr
+                    1fr;
+            }
+
+
+            .reset-filter {
+                grid-column:
+                    1 / -1;
+            }
+
+
+            .product-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .page-wrapper {
+                padding:
+                    20px
+                    14px
+                    45px;
+            }
+
+
+            .page-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 18px;
+            }
+
+
+            .product-counter {
+                width: 100%;
+            }
+
+
+            .filter-card {
+                padding: 17px;
+
+                border-radius: 19px;
+            }
+
+
+            .category-list {
+                flex-wrap: nowrap;
+
+                overflow-x: auto;
+
+                padding-bottom: 5px;
+
+                scrollbar-width: none;
+            }
+
+
+            .category-list::-webkit-scrollbar {
+                display: none;
+            }
+
+
+            .category-btn {
+                flex-shrink: 0;
+            }
+
+
+            .filter-bottom {
+                grid-template-columns: 1fr;
+            }
+
+
+            .reset-filter {
+                grid-column: auto;
+
+                width: 100%;
+            }
+
+
+            .active-filter-left {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+
+            .product-grid {
+                grid-template-columns: 1fr;
+
+                gap: 18px;
+            }
+
+
+            .product-image {
+                height: 250px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 400px) {
+
+            .page-header h1 {
+                font-size: 29px;
+            }
+
+
+            .search-box {
+                height: 54px;
+            }
+
+
+            .category-btn {
+                padding:
+                    9px
+                    14px;
+
+                font-size: 12px;
+            }
+
+
+            .product-image {
+                height: 220px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="page-wrapper">
+
+
+        <!-- ==========================================
+             HEADER
+        =========================================== -->
+
+        <header class="page-header">
+
+            <div class="header-content">
+
+                <span class="section-label">
+                    PRODUCT CATALOG
+                </span>
+
+                <h1>
+                    Temukan Produk Terbaik
+                </h1>
+
+                <p>
+                    Jelajahi berbagai produk pilihan
+                    dan gunakan filter untuk menemukan
+                    produk yang paling sesuai dengan
+                    kebutuhan Anda.
+                </p>
+
+            </div>
+
+
+            <div class="product-counter">
+
+                <span id="productCount">
+                    0
+                </span>
+
+                <small>
+                    Produk tersedia
+                </small>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==========================================
+             FILTER
+        =========================================== -->
+
+        <section class="filter-card">
+
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    <i class="bi bi-search"></i>
+                </span>
+
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari nama produk..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    type="button"
+                    id="clearSearch"
+                    class="clear-search"
+                    aria-label="Hapus pencarian"
+                >
+
+                    <i class="bi bi-x"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- CATEGORY -->
+
+            <div class="filter-title">
+
+                <i class="bi bi-grid"></i>
+
+                <span>
+                    Kategori
+                </span>
+
+            </div>
+
+
+            <div
+                class="category-list"
+                id="categoryFilter"
+            >
+
+                <button
+                    type="button"
+                    class="category-btn active"
+                    data-category=""
+                >
+
+                    <i class="bi bi-grid"></i>
+
+                    Semua
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="Elektronik"
+                >
+
+                    <i class="bi bi-phone"></i>
+
+                    Elektronik
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="Fashion"
+                >
+
+                    <i class="bi bi-bag"></i>
+
+                    Fashion
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="Makanan"
+                >
+
+                    <i class="bi bi-cup-hot"></i>
+
+                    Makanan
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="Olahraga"
+                >
+
+                    <i class="bi bi-trophy"></i>
+
+                    Olahraga
+
+                </button>
+
+            </div>
+
+
+
+            <!-- BOTTOM FILTER -->
+
+            <div class="filter-bottom">
+
+
+                <!-- PRICE -->
+
+                <div class="select-filter">
+
+                    <label for="priceFilter">
+
+                        <i class="bi bi-cash-stack"></i>
+
+                        Rentang Harga
+
+                    </label>
+
+
+                    <div class="custom-select">
+
+                        <select id="priceFilter">
+
+                            <option value="">
+                                Semua Harga
+                            </option>
+
+                            <option value="low">
+                                Di bawah Rp100.000
+                            </option>
+
+                            <option value="mid">
+                                Rp100.000 – Rp500.000
+                            </option>
+
+                            <option value="high">
+                                Di atas Rp500.000
+                            </option>
+
+                        </select>
+
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SORT -->
+
+                <div class="select-filter">
+
+                    <label for="sortFilter">
+
+                        <i class="bi bi-sort-down"></i>
+
+                        Urutkan
+
+                    </label>
+
+
+                    <div class="custom-select">
+
+                        <select id="sortFilter">
+
+                            <option value="default">
+                                Rekomendasi
+                            </option>
+
+                            <option value="low-high">
+                                Harga Terendah
+                            </option>
+
+                            <option value="high-low">
+                                Harga Tertinggi
+                            </option>
+
+                            <option value="name">
+                                Nama Produk
+                            </option>
+
+                        </select>
+
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RESET -->
+
+                <button
+                    type="button"
+                    class="reset-filter"
+                    id="resetFilter"
+                >
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                    Reset Filter
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             ACTIVE FILTER
+        =========================================== -->
+
+        <div class="active-filter-area">
+
+            <div class="active-filter-left">
+
+                <span class="filter-result-text">
+
+                    Menampilkan
+
+                    <strong id="resultCount">
+                        0
+                    </strong>
+
+                    produk
+
+                </span>
+
+
+                <div
+                    id="activeFilters"
+                    class="active-filters"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             PRODUCT LIST
+        =========================================== -->
+
+        <section
+            id="productList"
+            class="product-grid"
+        ></section>
+
+
+
+        <!-- ==========================================
+             EMPTY STATE
+        =========================================== -->
+
+        <section
+            id="emptyState"
+            class="empty-state"
+            style="display:none;"
+        >
+
+            <div class="empty-icon">
+
+                <i class="bi bi-search"></i>
+
+            </div>
+
+
+            <h3>
+                Produk tidak ditemukan
+            </h3>
+
+
+            <p>
+                Coba ubah kata pencarian
+                atau gunakan filter yang berbeda.
+            </p>
+
+
+            <button
+                type="button"
+                id="emptyReset"
+                class="empty-reset"
+            >
+
+                Tampilkan Semua Produk
+
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==============================================
+         JAVASCRIPT
+    =============================================== -->
+
+    <script>
+
+        /* =====================================================
+           PRODUCT DATABASE
+        ===================================================== */
+
+        const products = [
+
+            {
+                id: 1,
+
+                name: "Wireless Headphone",
+
+                category: "Elektronik",
+
+                price: 350000,
+
+                rating: 4.8,
+
+                image:
+                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Headphone wireless dengan kualitas suara jernih dan nyaman digunakan."
+            },
+
+
+            {
+                id: 2,
+
+                name: "Smart Watch Pro",
+
+                category: "Elektronik",
+
+                price: 850000,
+
+                rating: 4.9,
+
+                image:
+                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Smartwatch modern dengan berbagai fitur untuk aktivitas sehari-hari."
+            },
+
+
+            {
+                id: 3,
+
+                name: "Premium Hoodie",
+
+                category: "Fashion",
+
+                price: 185000,
+
+                rating: 4.7,
+
+                image:
+                    "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Hoodie premium dengan bahan lembut dan desain minimalis."
+            },
+
+
+            {
+                id: 4,
+
+                name: "Running Shoes",
+
+                category: "Olahraga",
+
+                price: 650000,
+
+                rating: 4.9,
+
+                image:
+                    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Sepatu olahraga ringan dengan teknologi yang nyaman untuk berlari."
+            },
+
+
+            {
+                id: 5,
+
+                name: "Premium Coffee",
+
+                category: "Makanan",
+
+                price: 85000,
+
+                rating: 4.6,
+
+                image:
+                    "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Kopi premium dengan aroma khas dan rasa yang nikmat."
+            },
+
+
+            {
+                id: 6,
+
+                name: "Bluetooth Speaker",
+
+                category: "Elektronik",
+
+                price: 420000,
+
+                rating: 4.8,
+
+                image:
+                    "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Speaker portable dengan suara powerful dan daya tahan baterai panjang."
+            },
+
+
+            {
+                id: 7,
+
+                name: "Classic Sneakers",
+
+                category: "Fashion",
+
+                price: 320000,
+
+                rating: 4.7,
+
+                image:
+                    "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Sneakers klasik yang cocok digunakan untuk berbagai aktivitas."
+            },
+
+
+            {
+                id: 8,
+
+                name: "Sport Jersey",
+
+                category: "Olahraga",
+
+                price: 125000,
+
+                rating: 4.5,
+
+                image:
+                    "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Jersey olahraga ringan dengan material breathable."
+            },
+
+
+            {
+                id: 9,
+
+                name: "Mechanical Keyboard",
+
+                category: "Elektronik",
+
+                price: 475000,
+
+                rating: 4.8,
+
+                image:
+                    "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Keyboard mechanical dengan respon cepat dan desain premium."
+            },
+
+
+            {
+                id: 10,
+
+                name: "Oversized T-Shirt",
+
+                category: "Fashion",
+
+                price: 95000,
+
+                rating: 4.6,
+
+                image:
+                    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "T-shirt oversized dengan bahan nyaman dan gaya kasual modern."
+            },
+
+
+            {
+                id: 11,
+
+                name: "Protein Snack",
+
+                category: "Makanan",
+
+                price: 75000,
+
+                rating: 4.5,
+
+                image:
+                    "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Snack praktis dengan rasa lezat untuk menemani aktivitas harian."
+            },
+
+
+            {
+                id: 12,
+
+                name: "Yoga Mat Premium",
+
+                category: "Olahraga",
+
+                price: 280000,
+
+                rating: 4.8,
+
+                image:
+                    "https://images.unsplash.com/photo-1592432678016-e910b452f9a2?auto=format&fit=crop&w=900&q=85",
+
+                description:
+                    "Yoga mat premium dengan permukaan nyaman dan anti-slip."
+            }
+
+        ];
+
+
+        /* =====================================================
+           ELEMENT
+        ===================================================== */
+
+        const productList =
+            document.getElementById(
+                "productList"
+            );
+
+
+        const productCount =
+            document.getElementById(
+                "productCount"
+            );
+
+
+        const resultCount =
+            document.getElementById(
+                "resultCount"
+            );
+
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const categoryButtons =
+            document.querySelectorAll(
+                ".category-btn"
+            );
+
+
+        const priceFilter =
+            document.getElementById(
+                "priceFilter"
+            );
+
+
+        const sortFilter =
+            document.getElementById(
+                "sortFilter"
+            );
+
+
+        const resetFilter =
+            document.getElementById(
+                "resetFilter"
+            );
+
+
+        const emptyReset =
+            document.getElementById(
+                "emptyReset"
+            );
+
+
+        const emptyState =
+            document.getElementById(
+                "emptyState"
+            );
+
+
+        const clearSearch =
+            document.getElementById(
+                "clearSearch"
+            );
+
+
+        const activeFilters =
+            document.getElementById(
+                "activeFilters"
+            );
+
+
+        let selectedCategory = "";
+
+
+        /* =====================================================
+           FORMAT PRICE
+        ===================================================== */
+
+        function formatPrice(price) {
+
+            return new Intl.NumberFormat(
+                "id-ID",
+                {
+                    style: "currency",
+                    currency: "IDR",
+                    maximumFractionDigits: 0
+                }
+            ).format(price);
+
+        }
+
+
+        /* =====================================================
+           CHECK PRICE
+        ===================================================== */
+
+        function checkPrice(
+            price,
+            filter
+        ) {
+
+            if (!filter) {
+
+                return true;
+
+            }
+
+
+            if (filter === "low") {
+
+                return price < 100000;
+
+            }
+
+
+            if (filter === "mid") {
+
+                return (
+                    price >= 100000 &&
+                    price <= 500000
+                );
+
+            }
+
+
+            if (filter === "high") {
+
+                return price > 500000;
+
+            }
+
+
+            return true;
+
+        }
+
+
+        /* =====================================================
+           FILTER PRODUCTS
+        ===================================================== */
+
+        function filterProducts() {
+
+            const keyword =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const price =
+                priceFilter.value;
+
+
+            const sort =
+                sortFilter.value;
+
+
+            let filteredProducts =
+                products.filter(
+                    product => {
+
+                        const
+                            matchesSearch =
+                            product.name
+                                .toLowerCase()
+                                .includes(
+                                    keyword
+                                );
+
+
+                        const
+                            matchesCategory =
+                            selectedCategory === "" ||
+                            product.category ===
+                            selectedCategory;
+
+
+                        const
+                            matchesPrice =
+                            checkPrice(
+                                product.price,
+                                price
+                            );
+
+
+                        return (
+                            matchesSearch &&
+                            matchesCategory &&
+                            matchesPrice
+                        );
+
+                    }
+                );
+
+
+            /* SORT */
+
+            if (
+                sort ===
+                "low-high"
+            ) {
+
+                filteredProducts.sort(
+                    (a, b) =>
+                        a.price - b.price
+                );
+
+            }
+
+
+            else if (
+                sort ===
+                "high-low"
+            ) {
+
+                filteredProducts.sort(
+                    (a, b) =>
+                        b.price - a.price
+                );
+
+            }
+
+
+            else if (
+                sort ===
+                "name"
+            ) {
+
+                filteredProducts.sort(
+                    (a, b) =>
+                        a.name.localeCompare(
+                            b.name
+                        )
+                );
+
+            }
+
+
+            renderProducts(
+                filteredProducts
+            );
+
+            updateFilterInfo();
+
+        }
+
+
+        /* =====================================================
+           RENDER PRODUCT
+        ===================================================== */
+
+        function renderProducts(
+            data
+        ) {
+
+            productList.innerHTML = "";
+
+
+            if (data.length === 0) {
+
+                productList.style.display =
+                    "none";
+
+                emptyState.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            productList.style.display =
+                "grid";
+
+            emptyState.style.display =
+                "none";
+
+
+            data.forEach(
+                product => {
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    card.className =
+                        "product-card";
+
+
+                    card.innerHTML = `
+
+                        <div class="product-image">
+
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}"
+                                loading="lazy"
+                            >
+
+
+                            <span class="product-badge">
+                                ${product.category}
+                            </span>
+
+
+                            <button
+                                type="button"
+                                class="favorite-btn"
+                                aria-label="Tambah favorit"
+                            >
+
+                                <i class="bi bi-heart"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <div class="product-category">
+                                ${product.category}
+                            </div>
+
+
+                            <h3 class="product-name">
+                                ${product.name}
+                            </h3>
+
+
+                            <p class="product-description">
+                                ${product.description}
+                            </p>
+
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ${formatPrice(product.price)}
+                                </div>
+
+
+                                <div class="product-rating">
+
+                                    <i class="bi bi-star-fill"></i>
+
+                                    ${product.rating}
+
+                                    <span>
+                                        / 5
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    productList.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+
+            /* FAVORITE */
+
+            document
+                .querySelectorAll(
+                    ".favorite-btn"
+                )
+                .forEach(
+                    button => {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                this.classList.toggle(
+                                    "active"
+                                );
+
+
+                                const icon =
+                                    this.querySelector(
+                                        "i"
+                                    );
+
+
+                                icon.classList.toggle(
+                                    "bi-heart"
+                                );
+
+
+                                icon.classList.toggle(
+                                    "bi-heart-fill"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           UPDATE INFO
+        ===================================================== */
+
+        function updateFilterInfo() {
+
+            const keyword =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const price =
+                priceFilter.value;
+
+
+            const total =
+                products.filter(
+                    product => {
+
+                        const
+                            matchesSearch =
+                            !keyword ||
+                            product.name
+                                .toLowerCase()
+                                .includes(
+                                    keyword
+                                );
+
+
+                        const
+                            matchesCategory =
+                            !selectedCategory ||
+                            product.category ===
+                            selectedCategory;
+
+
+                        const
+                            matchesPrice =
+                            checkPrice(
+                                product.price,
+                                price
+                            );
+
+
+                        return (
+                            matchesSearch &&
+                            matchesCategory &&
+                            matchesPrice
+                        );
+
+                    }
+                ).length;
+
+
+            productCount.textContent =
+                total;
+
+            resultCount.textContent =
+                total;
+
+
+            updateActiveFilters();
+
+        }
+
+
+        /* =====================================================
+           ACTIVE FILTER CHIPS
+        ===================================================== */
+
+        function updateActiveFilters() {
+
+            activeFilters.innerHTML =
+                "";
+
+
+            /* CATEGORY */
+
+            if (selectedCategory) {
+
+                createFilterChip(
+                    selectedCategory,
+                    () => {
+
+                        selectedCategory =
+                            "";
+
+
+                        categoryButtons
+                            .forEach(
+                                button =>
+                                    button.classList
+                                        .remove(
+                                            "active"
+                                        )
+                            );
+
+
+                        document
+                            .querySelector(
+                                '[data-category=""]'
+                            )
+                            .classList
+                            .add(
+                                "active"
+                            );
+
+
+                        filterProducts();
+
+                    }
+                );
+
+            }
+
+
+            /* PRICE */
+
+            if (priceFilter.value) {
+
+                const labels = {
+
+                    low:
+                        "Di bawah Rp100.000",
+
+                    mid:
+                        "Rp100.000 – Rp500.000",
+
+                    high:
+                        "Di atas Rp500.000"
+
+                };
+
+
+                createFilterChip(
+                    labels[
+                        priceFilter.value
+                    ],
+                    () => {
+
+                        priceFilter.value =
+                            "";
+
+                        filterProducts();
+
+                    }
+                );
+
+            }
+
+
+            /* SEARCH */
+
+            if (
+                searchInput.value.trim()
+            ) {
+
+                createFilterChip(
+                    `"${searchInput.value.trim()}"`,
+                    () => {
+
+                        searchInput.value =
+                            "";
+
+                        clearSearch.classList
+                            .remove(
+                                "show"
+                            );
+
+                        filterProducts();
+
+                    }
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CREATE CHIP
+        ===================================================== */
+
+        function createFilterChip(
+            text,
+            removeFunction
+        ) {
+
+            const chip =
+                document.createElement(
+                    "div"
+                );
+
+
+            chip.className =
+                "filter-chip";
+
+
+            const label =
+                document.createElement(
+                    "span"
+                );
+
+
+            label.textContent =
+                text;
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.innerHTML =
+                '<i class="bi bi-x"></i>';
+
+
+            button.addEventListener(
+                "click",
+                removeFunction
+            );
+
+
+            chip.appendChild(
+                label
+            );
+
+
+            chip.appendChild(
+                button
+            );
+
+
+            activeFilters.appendChild(
+                chip
+            );
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                if (
+                    this.value.trim()
+                ) {
+
+                    clearSearch.classList
+                        .add(
+                            "show"
+                        );
+
+                }
+
+                else {
+
+                    clearSearch.classList
+                        .remove(
+                            "show"
+                        );
+
+                }
+
+
+                filterProducts();
+
+            }
+        );
+
+
+        /* CLEAR SEARCH */
+
+        clearSearch.addEventListener(
+            "click",
+            function () {
+
+                searchInput.value =
+                    "";
+
+
+                this.classList.remove(
+                    "show"
+                );
+
+
+                filterProducts();
+
+
+                searchInput.focus();
+
+            }
+        );
+
+
+        /* =====================================================
+           CATEGORY
+        ===================================================== */
+
+        categoryButtons.forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        categoryButtons
+                            .forEach(
+                                btn =>
+                                    btn.classList
+                                        .remove(
+                                            "active"
+                                        )
+                            );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        selectedCategory =
+                            this.dataset
+                                .category;
+
+
+                        filterProducts();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           PRICE
+        ===================================================== */
+
+        priceFilter.addEventListener(
+            "change",
+            filterProducts
+        );
+
+
+        /* =====================================================
+           SORT
+        ===================================================== */
+
+        sortFilter.addEventListener(
+            "change",
+            filterProducts
+        );
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        function resetAllFilters() {
+
+            searchInput.value =
+                "";
+
+
+            priceFilter.value =
+                "";
+
+
+            sortFilter.value =
+                "default";
+
+
+            selectedCategory =
+                "";
+
+
+            categoryButtons
+                .forEach(
+                    btn =>
+                        btn.classList
+                            .remove(
+                                "active"
+                            )
+                );
+
+
+            document
+                .querySelector(
+                    '[data-category=""]'
+                )
+                .classList
+                .add(
+                    "active"
+                );
+
+
+            clearSearch.classList
+                .remove(
+                    "show"
+                );
+
+
+            filterProducts();
+
+        }
+
+
+        resetFilter.addEventListener(
+            "click",
+            resetAllFilters
+        );
+
+
+        emptyReset.addEventListener(
+            "click",
+            resetAllFilters
+        );
+
+
+        /* =====================================================
+           INITIALIZE
+        ===================================================== */
+
+        filterProducts();
+
+    </script>
+
+</body>
+
+</html>
+```
